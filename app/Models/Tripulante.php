@@ -9,7 +9,15 @@ class Tripulante extends Model
 {
     use HasFactory;
     //protected $table ="Tripulantes";
-    //protected $fillable =["nombre", "apellido", "rol","fecha_incorporacion" ];
+    
+    protected $fillable =[
+        "nombre", 
+        "apellido", 
+        "rol",
+        "fecha_incorporacion",
+        "viaje_id"
+    ];
+
    //protected $guarded =["id"];
     
     //public function viajes(){
