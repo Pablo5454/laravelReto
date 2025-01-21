@@ -16,6 +16,12 @@ Route::get('/', function () {
 
 
 // Rutas para Médicos
+Route::get('/create', [MedicoController::class, 'create']) -> name('medicos.create');
+Route::post('/medicos/store', [MedicoController::class, 'store'])->name('medicos.store');
+Route::get('/show', [MedicoController::class, 'show']) -> name('medicos.show');
+Route::get('/edit', [MedicoController::class, 'edit']) -> name('medicos.edit');
+Route::delete('/destroy/{medico}', [MedicoController::class, 'destroy']) -> name('medicos.destroy');
+
 Route::get('/medicos', [MedicoController::class, 'index']) -> name('medicos.index');
 
 // Rutas para Viajes
