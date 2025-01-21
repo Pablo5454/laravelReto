@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Viaje extends Model
 {
    use HasFactory;
+ 
+   protected $fillable =[
+      "origen", 
+      "destino"
+  ];
 }
