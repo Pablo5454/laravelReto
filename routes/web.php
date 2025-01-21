@@ -12,17 +12,20 @@ Route::get('/', function () {
     return redirect('/medicos');
 });
 
+
+
+
 // Rutas para Médicos
-Route::resource('medicos', MedicoController::class);
+Route::get('/medicos', [MedicoController::class, 'index']) -> name('medicos.index');
 
 // Rutas para Viajes
-Route::resource('viajes', ViajeController::class);
+Route::get('/', [ViajeController::class, 'index']) -> name('viajes.index,');
 
 // Rutas para Rescates
-Route::resource('rescates', RescateController::class);
+Route::get('/', [RescateController::class, 'index']) -> name('rescates.index');
 
 // Rutas para Rescatados
-Route::resource('rescatados', RescatadoController::class);
+Route::get('/', [RescatadoController::class, 'index']) -> name('rescatados.index');
 
 // Rutas para Tripulantes
-Route::resource('tripulantes', TripulanteController::class);
+Route::get('/', [TripulanteController::class, 'index']) -> name('tripulantes.index');
