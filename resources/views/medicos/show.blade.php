@@ -7,6 +7,28 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>SHOW!</h2>
+    <a href="{{route('medicos.index')}}">Volver</a>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Fecha de Incorporación</th>
+                <th>Viaje Asociado</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>{{ $medico->id }}</td>
+                    <td>{{ $medico->nombre }}</td>
+                    <td>{{ $medico->apellido }}</td>
+                    <td>{{ $medico->fecha_incorporacion }}</td>
+                    <td>{{ $medico->viaje_id }}</td>
+            
+                </tr>
+        </tbody>
+    </table>
 </body>
 </html>

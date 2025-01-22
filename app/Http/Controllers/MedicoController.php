@@ -35,7 +35,7 @@ class MedicoController extends Controller
         return view('medicos.create');
     }
 
-    
+
     /**
      * Store a newly created resource in storage.
      */
@@ -57,25 +57,27 @@ class MedicoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Medico $medico)
     {
-        //
+        return view('medicos.show', compact('medico'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Medico $medico)
     {
-        //
+        return view('medicos.edit', compact('medico'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Medico $medico)
     {
-        //
+        $medico -> update($request -> all());
+
+        return redirect()->route('medicos.index');
     }
 
     /**
