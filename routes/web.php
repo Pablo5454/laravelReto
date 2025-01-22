@@ -22,11 +22,16 @@ Route::get('/medicos/show/{medico}', [MedicoController::class, 'show']) -> name(
 Route::get('/medicos/edit/{medico}', [MedicoController::class, 'edit']) -> name('medicos.edit');
 Route::put('/medicos/update/{medico}', [MedicoController::class, 'update'])->name('medicos.update');
 Route::delete('/medicos/destroy/{medico}', [MedicoController::class, 'destroy']) -> name('medicos.destroy');
-
 Route::get('/medicos', [MedicoController::class, 'index']) -> name('medicos.index');
 
 // Rutas para Viajes
-Route::get('/', [ViajeController::class, 'index']) -> name('viajes.index,');
+Route::get('/viajes/create', [ViajeController::class, 'create']) -> name('viajes.create');
+Route::post('/viajes/store', [ViajeController::class, 'store'])->name('viajes.store');
+Route::get('/viajes/show/{viaje}', [ViajeController::class, 'show']) -> name('viajes.show');
+Route::get('/viajes/edit/{viaje}', [ViajeController::class, 'edit']) -> name('viajes.edit');
+Route::put('/viajes/update/{viaje}', [ViajeController::class, 'update'])->name('viajes.update');
+Route::delete('/viajes/destroy/{viaje}', [ViajeController::class, 'destroy']) -> name('viajes.destroy');
+Route::get('/viajes', [ViajeController::class, 'index']) -> name('viajes.index');
 
 // Rutas para Rescates
 Route::get('/', [RescateController::class, 'index']) -> name('rescates.index');

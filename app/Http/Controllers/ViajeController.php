@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Viaje;
+
 
 class ViajeController extends Controller
 {
@@ -12,6 +14,9 @@ class ViajeController extends Controller
     public function index()
     {
         //
+        $viajes = Viaje::all();
+        return view('viajes.index', compact('viajes'));
+
     }
 
     /**
@@ -20,6 +25,8 @@ class ViajeController extends Controller
     public function create()
     {
         //
+        return view('viajes.create');
+
     }
 
     /**
@@ -28,37 +35,53 @@ class ViajeController extends Controller
     public function store(Request $request)
     {
         //
+        // Viaje::create([
+        //     'origen'=>$request->origen,
+        //     'destino'=>$request->destino
+        // ]);
+        Viaje::create($request->all());
+
+        return redirect()->route('viajes.index');
+        
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Viaje $viaje)
     {
         //
+        return view ('viajes.show', compact('viaje'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Viaje $viaje)
     {
         //
+        return view('viajes.edit', compact('viaje'));
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Viaje $viaje)
     {
         //
+        $viaje -> update($request -> all());
+
+        return redirect()->route('viajes.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Viaje $viaje)
     {
         //
+        $viaje -> delete();
+        return redirect() -> route('viajes.index');
     }
 }
