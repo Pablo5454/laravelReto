@@ -35,6 +35,7 @@ class MedicoController extends Controller
         return view('medicos.create');
     }
 
+    
     /**
      * Store a newly created resource in storage.
      */
