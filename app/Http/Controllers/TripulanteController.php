@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Tripulante;
+
 
 class TripulanteController extends Controller
 {
@@ -11,7 +13,9 @@ class TripulanteController extends Controller
      */
     public function index()
     {
-        //
+        $tripulantes = Tripulante::all();
+        return view('tripulantes.index', compact('tripulantes'));
+    
     }
 
     /**
@@ -19,7 +23,8 @@ class TripulanteController extends Controller
      */
     public function create()
     {
-        //
+        return view('tripulantes.create');
+
     }
 
     /**
@@ -27,38 +32,51 @@ class TripulanteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Tripulante::create([
+            'nombre'=>$request->nombre,
+            'apellido'=>$request->apellido,
+            'rol'=>$request->rol,
+            'fecha_incorporacion'=>$request->fechaIncorporacion,
+            'viaje_id'=>$request->viajeId
+        ]);
+        // Tripulante::create($request->all());
+
+        return redirect()->route('tripulantes.index');
+     
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Tripulante $tripulante)
     {
-        //
+        return view('tripulantes.show', compact('tripulante'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Tripulante $tripulante)
     {
-        //
+        return view('tripulantes.edit', compact('tripulante'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Tripulante $tripulante)
     {
-        //
+        $tripulante -> update($request -> all());
+
+        return redirect()->route('tripulantes.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Tripulante $tripulante)
     {
-        //
+        $tripulante -> delete();
+        return redirect() -> route('tripulantes.index');
     }
 }

@@ -34,10 +34,29 @@ Route::delete('/viajes/destroy/{viaje}', [ViajeController::class, 'destroy']) ->
 Route::get('/viajes', [ViajeController::class, 'index']) -> name('viajes.index');
 
 // Rutas para Rescates
-Route::get('/', [RescateController::class, 'index']) -> name('rescates.index');
+Route::get('/rescates/create', [RescateController::class, 'create']) -> name('rescates.create');
+Route::post('/rescates/store', [RescateController::class, 'store'])->name('rescates.store');
+Route::get('/rescates/show/{rescate}', [RescateController::class, 'show']) -> name('rescates.show');
+Route::get('/rescates/edit/{rescate}', [RescateController::class, 'edit']) -> name('rescates.edit');
+Route::put('/rescates/update/{rescate}', [RescateController::class, 'update'])->name('rescates.update');
+Route::delete('/rescates/destroy/{rescate}', [RescateController::class, 'destroy']) -> name('rescates.destroy');
+Route::get('/rescates', [RescateController::class, 'index']) -> name('rescates.index');
 
 // Rutas para Rescatados
-Route::get('/', [RescatadoController::class, 'index']) -> name('rescatados.index');
+Route::get('/rescatados/create', [RescatadoController::class, 'create']) -> name('rescatados.create');
+Route::post('/rescatados/store', [RescatadoController::class, 'store'])->name('rescatados.store');
+Route::get('/rescatados/show/{rescatado}', [RescatadoController::class, 'show']) -> name('rescatados.show');
+Route::get('/rescatados/edit/{rescatado}', [RescatadoController::class, 'edit']) -> name('rescatados.edit');
+Route::put('/rescatados/update/{rescatado}', [RescatadoController::class, 'update'])->name('rescatados.update');
+Route::delete('/rescatados/destroy/{rescatado}', [RescatadoController::class, 'destroy']) -> name('rescatados.destroy');
+Route::get('/rescatados', [RescatadoController::class, 'index']) -> name('rescatados.index');
+
 
 // Rutas para Tripulantes
-Route::get('/', [TripulanteController::class, 'index']) -> name('tripulantes.index');
+Route::get('/tripulantes/create', [TripulanteController::class, 'create']) -> name('tripulantes.create');
+Route::post('/tripulantes/store', [TripulanteController::class, 'store'])->name('tripulantes.store');
+Route::get('/tripulantes/show/{tripulante}', [TripulanteController::class, 'show']) -> name('tripulantes.show');
+Route::get('/tripulantes/edit/{tripulante}', [TripulanteController::class, 'edit']) -> name('tripulantes.edit');
+Route::put('/tripulantes/update/{tripulante}', [TripulanteController::class, 'update'])->name('tripulantes.update');
+Route::delete('/tripulantes/destroy/{tripulante}', [TripulanteController::class, 'destroy']) -> name('tripulantes.destroy');
+Route::get('/tripulantes', [TripulanteController::class, 'index']) -> name('tripulantes.index');

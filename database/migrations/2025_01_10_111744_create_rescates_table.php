@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('rescates', function (Blueprint $table) {
             $table->id();
-            $table-> date('fecha_inicio');
-            $table-> date('fecha_fin');
+            $table-> string('fecha_inicio', 255);
+            $table-> string('fecha_fin', 255);
             $table->timestamps();
         });
     }
