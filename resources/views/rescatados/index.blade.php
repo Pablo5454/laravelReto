@@ -7,6 +7,8 @@
     <title>Document</title>
 </head>
 <body>
+    @include('_partials.menu')
+
     <a href="{{route('rescatados.create')}}">Crear nuevo rescatado</a>
     <table class="table table-striped">
         <thead>

@@ -7,6 +7,8 @@
     <title>Document</title>
 </head>
 <body>
+    @include('_partials.menu')
+
     <a href="{{route('rescatados.index')}}">Volver</a>
     <form action="{{route('rescatados.store') }}" method="post">
         @csrf

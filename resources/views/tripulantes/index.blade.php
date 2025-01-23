@@ -36,6 +36,8 @@
             @endforeach
         </tbody>
     </table>
+    <a href="{{route('principal')}}">Volver</a>
+
 </body>
 </html>
 

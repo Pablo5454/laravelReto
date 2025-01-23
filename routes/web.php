@@ -7,12 +7,13 @@ use App\Http\Controllers\RescateController;
 use App\Http\Controllers\RescatadoController;
 use App\Http\Controllers\TripulanteController;
 
-// Ruta principal que redirige a la lista de médicos
+// Ruta que redirige a la página principal
 Route::get('/', function () {
-    return redirect('/medicos');
+    return redirect('/principal');
 });
 
 
+Route::view('/principal', 'principal') -> name('principal');
 
 
 // Rutas para Médicos

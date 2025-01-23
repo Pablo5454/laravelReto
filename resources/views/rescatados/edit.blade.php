@@ -7,6 +7,9 @@
     <title>Document</title>
 </head>
 <body>
+
+    @include('_partials.menu')
+
     <a href="{{route('rescatados.index')}}">Volver</a>
     <form action="{{route('rescatados.update', $rescatado -> id)}}" method="post">
         @method('PUT')
