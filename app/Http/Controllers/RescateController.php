@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Rescate;
+use App\Models\Viaje;
+
 
 
 class RescateController extends Controller
@@ -23,7 +25,8 @@ class RescateController extends Controller
      */
     public function create()
     {
-        return view('rescates.create');
+        $viajes = Viaje::all();
+        return view('rescates.create', compact('viajes'));
     }
 
     /**
@@ -33,7 +36,8 @@ class RescateController extends Controller
     {
         Rescate::create([
             'fecha_inicio'=>$request->fechaInicio,
-            'fecha_fin'=>$request->fechaFin
+            'fecha_fin'=>$request->fechaFin,
+            'viaje'=>$request->viaje
         ]);
         return redirect()->route('rescates.index');
     }

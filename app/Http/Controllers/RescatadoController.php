@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Rescatado;
+
 
 class RescatadoController extends Controller
 {
@@ -11,7 +13,8 @@ class RescatadoController extends Controller
      */
     public function index()
     {
-        //
+        $rescatados = Rescatado::all();
+        return view('rescatados.index', compact('rescatados'));
     }
 
     /**
@@ -19,7 +22,7 @@ class RescatadoController extends Controller
      */
     public function create()
     {
-        //
+        return view('rescatados.create');
     }
 
     /**
@@ -27,38 +30,53 @@ class RescatadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Rescatado::create([
+            'nombre'=>$request->nombre,
+            'foto'=>$request->foto,
+            'edad'=>$request->edad,
+            'sexo'=>$request->sexo,
+            'procedencia'=>$request->procedencia,
+            'valoracion_medica'=>$request->valoracion_medica,
+            'medico_id'=>$request->medico_id,
+            'rescate_id'=>$request->rescate_id
+        ]);
+
+        return redirect()->route('rescatados.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Rescatado $rescatado)
     {
-        //
+        return view('rescatados.show', compact('rescatado'));
+
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Rescatado $rescatado)
     {
-        //
+        return view('rescatados.edit', compact('rescatado'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Rescatado $rescatado)
     {
-        //
+        $rescatado -> update($request -> all());
+
+        return redirect()->route('rescatados.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Rescatado $rescatado)
     {
-        //
+        $rescatado -> delete();
+        return redirect() -> route('rescatados.index');
     }
 }

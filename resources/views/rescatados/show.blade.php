@@ -7,26 +7,32 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="{{route('medicos.index')}}">Volver</a>
+    <a href="{{route('rescatados.index')}}">Volver</a>
 
     <table class="table table-striped">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Fecha de Incorporación</th>
-                <th>Rol</th>
+                <th>Foto</th>
+                <th>Edad</th>
+                <th>Procedencia</th>
+                <th>Valoración médica</th>
+                <th>Médico Id</th>
+                <th>Rescate Id</th>
             </tr>
         </thead>
         <tbody>
                 <tr>
-                    <td>{{ $rescatados->id }}</td>
-                    <td>{{ $rescatados->nombre }}</td>
-                    <td>{{ $rescatados->apellido }}</td>
-                    <td>{{ $rescatados->fecha_incorporacion }}</td>
-                    <td>{{ $rescatados->vrol}}</td>
-            
+                    <td>{{ $rescatado->id }}</td>
+                    <td>{{ $rescatado->nombre }}</td>
+                    <td>{{ $rescatado->foto }}</td>
+                    <td>{{ $rescatado->edad }}</td>
+                    <td>{{ $rescatado->procedencia}}</td>
+                    <td>{{ $rescatado->valoracion_medica }}</td>
+                    <td>{{ $rescatado->medico_id}}</td>
+                    <td>{{ $rescatado->rescate_id}}</td>
+
                 </tr>
         </tbody>
     </table>

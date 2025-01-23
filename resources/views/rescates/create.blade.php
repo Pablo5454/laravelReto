@@ -14,6 +14,11 @@
         <input type="text" name="fechaInicio"/>
         <label>Fecha fin:</label>
         <input type="text" name="fechaFin"/>
+        <ul>
+@foreach ($viajes as $viaje)
+    <li>{{ $viaje->id }}</li>
+@endforeach
+</ul>
         <input type="submit" value="Crear"/>
     </form>
 </body>
