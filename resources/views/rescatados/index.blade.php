@@ -8,8 +8,14 @@
 </head>
 <body>
     @include('_partials.menu')
+    <br>
+    <a href="{{route('rescatados.create')}}" class="btn ms-3" style="
+    background-color: #ffdd59;
+    color: #333;
+    font-weight: bold;
+    border: none;
+    transition: background-color 0.3s ease;">Crear nuevo rescatado</a>
 
-    <a href="{{route('rescatados.create')}}">Crear nuevo rescatado</a>
     <table class="table table-striped">
         <thead>
             <tr>

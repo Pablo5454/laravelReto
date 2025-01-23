@@ -9,8 +9,7 @@
 <body>
 
     @include('_partials.menu')
-
-    <a href="{{route('rescatados.index')}}">Volver</a>
+    <br>
     <form action="{{route('rescatados.update', $rescatado -> id)}}" method="post">
         @method('PUT')
         @csrf
@@ -34,5 +33,16 @@
         <input type="submit" value="Editar"/>
 
     </form>
+    <div class="d-flex justify-content-center align-items-center" style="height: 10vh;">
+        <a href="{{route('rescatados.index')}}" class="btn" style="
+            background-color: #ffdd59;
+            color: #333;
+            font-weight: bold;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: background-color 0.3s ease;">Volver</a>
+    </div>
 </body>
 </html>

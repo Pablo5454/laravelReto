@@ -7,7 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="{{route('tripulantes.index')}}">Volver</a>
+    @include('_partials.menu')
+    <br>
 
     <table class="table table-striped">
         <thead>
@@ -32,5 +33,16 @@
                 </tr>
         </tbody>
     </table>
+    <div class="d-flex justify-content-center align-items-center" style="height: 10vh;">
+        <a href="{{route('tripulantes.index')}}" class="btn" style="
+            background-color: #ffdd59;
+            color: #333;
+            font-weight: bold;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: background-color 0.3s ease;">Volver</a>
+    </div>
 </body>
 </html>

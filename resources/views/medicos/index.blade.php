@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <a href="{{route('medicos.create')}}">Crear nuevo médico</a>
+
+    @include('_partials.menu')
+    <br>
+    <a href="{{route('medicos.create')}}" class="btn ms-3" style="
+    background-color: #ffdd59;
+    color: #333;
+    font-weight: bold;
+    border: none;
+    transition: background-color 0.3s ease;">Crear nuevo médico</a>
+    
     <table class="table table-striped">
         <thead>
             <tr>
