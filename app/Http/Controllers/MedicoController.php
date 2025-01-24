@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\MedicoRequest;
 use App\Models\Medico;
+use App\Models\Viaje;
+
 
 class MedicoController extends Controller
 {
@@ -32,8 +34,10 @@ class MedicoController extends Controller
         // $medico -> viaje_id = "01";
 
         // $medico -> save();
+        $viajes = Viaje::all();
 
-        return view('medicos.create');
+
+        return view('medicos.create', compact('viajes'));
     }
 
 
@@ -46,8 +50,8 @@ class MedicoController extends Controller
         Medico::create([
             'nombre'=>$request->nombre,
             'apellido'=>$request->apellido,
-            'fecha_incorporacion'=>$request->fechaIncorporacion,
-            'viaje_id'=>$request->viajeId
+            'fecha_incorporacion'=>$request->fecha_incorporacion,
+            'viaje_id'=>$request->viaje_id
         ]);
         // Medico::create($request->all());
 

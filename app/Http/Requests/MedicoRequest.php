@@ -24,7 +24,8 @@ class MedicoRequest extends FormRequest
         return [
             'nombre' => 'required',
             'apellido' => 'required',
-            'fecha' => 'required'
+            'fecha_incorporacion' => 'required',
+            'viaje_id' => 'required'
         ];
     }
 }

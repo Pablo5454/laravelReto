@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Tripulante;
 use App\Http\Requests\TripulanteRequest;
 
+use App\Models\Viaje;
 
 
 class TripulanteController extends Controller
@@ -25,7 +26,9 @@ class TripulanteController extends Controller
      */
     public function create()
     {
-        return view('tripulantes.create');
+        $viajes = Viaje::all();
+
+        return view('tripulantes.create', compact('viajes'));
 
     }
 
@@ -38,8 +41,8 @@ class TripulanteController extends Controller
             'nombre'=>$request->nombre,
             'apellido'=>$request->apellido,
             'rol'=>$request->rol,
-            'fecha_incorporacion'=>$request->fechaIncorporacion,
-            'viaje_id'=>$request->viajeId
+            'fecha_incorporacion'=>$request->fecha_incorporacion,
+            'viaje_id'=>$request->viaje_id
         ]);
         // Tripulante::create($request->all());
 

@@ -5,6 +5,8 @@ use App\Http\Requests\RescatadoRequest;
 
 use Illuminate\Http\Request;
 use App\Models\Rescatado;
+use App\Models\Medico;
+use App\Models\Rescate;
 
 
 class RescatadoController extends Controller
@@ -23,7 +25,9 @@ class RescatadoController extends Controller
      */
     public function create()
     {
-        return view('rescatados.create');
+        $medicos = Medico::all();
+        $rescates = Rescate::all();
+        return view('rescatados.create', compact('medicos', 'rescates'));
     }
 
     /**

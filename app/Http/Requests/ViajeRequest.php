@@ -22,7 +22,8 @@ class ViajeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'origen'=>'required',
+            'destino'=>'required'
         ];
     }
 }

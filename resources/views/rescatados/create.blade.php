@@ -7,48 +7,60 @@
         @csrf
         <label>Nombre:</label>
         <input type="text" name="nombre"/>
+            @error('nombre')
+            <div class="text-danger">Campo requerido</div>
+            @enderror
         <label>Foto:</label>
         <input type="text" name="foto" >
+            @error('foto')
+            <div class="text-danger">Campo requerido</div>
+            @enderror
         <label>Edad:</label>
         <input type="text" name="edad" />
+            @error('edad')
+            <div class="text-danger">Campo requerido</div>
+            @enderror
         <label>Sexo:</label>
         <input type="text" name="sexo" />
+            @error('sexo')
+            <div class="text-danger">Campo requerido</div>
+            @enderror
         <label>Procedencia:</label>
         <input type="text" name="procedencia" />
+            @error('procedencia')
+            <div class="text-danger">Campo requerido</div>
+            @enderror
         <label>Valoración médica:</label>
         <input type="text" name="valoracion_medica" />
-        <label>Médico Id:</label>
-        <input type="text" name="medico_id" />
-        <label>Rescate Id:</label>
-        <input type="text" name="rescate_id" />
+            @error('valoracion_medica')
+            <div class="text-danger">Campo requerido</div>
+            @enderror
+        <label>Medico:</label>
+        <select name="medico_id">
+            <option value="" disabled selected>Selecciona un medico</option>
+            @foreach ($medicos as $medico)
+                <option value="{{ $medico->id }}">{{ $medico->id }} - {{ $medico->nombre }} </option>
+            @endforeach
+        </select>
+        @error('medico_id')
+        <div class="text-danger">Campo requerido</div>
+        @enderror
+        <label>Rescate:</label>
+        <select name="rescate_id">
+            <option value="" disabled selected>Selecciona un rescate</option>
+            @foreach ($rescates as $rescate)
+                <option value="{{ $rescate->id }}">{{ $rescate->id }}  </option>
+            @endforeach
+        </select>
+        @error('rescate_id')
+        <div class="text-danger">Campo requerido</div>
+        @enderror
         <div class="d-flex justify-content-center align-items-center" style="height: 10vh;">
 
-            <input type="submit" value="Crear" style="
-                background-color: #4CAF50; 
-                color: white;
-                padding: 10px 20px; 
-                font-size: 1.2rem; 
-                font-weight: bold; 
-                border: none; 
-                border-radius: 8px;
-                cursor: pointer;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-                transition: background-color 0.3s, transform 0.2s;
-                margin-right: 15px;" 
-                onmouseover="this.style.backgroundColor='#45a049'; this.style.transform='scale(1.05)';"
-                onmouseout="this.style.backgroundColor='#4CAF50'; this.style.transform='scale(1)';"
+            <input type="submit" value="Crear" 
             />
         
-            <a href="{{ route('rescatados.index') }}" class="btn" style="
-                background-color: #ffdd59;
-                color: #333;
-                font-weight: bold;
-                border: none;
-                padding: 10px 20px;
-                font-size: 1.2rem;
-                text-decoration: none;
-                transition: background-color 0.3s ease;
-                margin-left: 15px;">
+            <a href="{{ route('rescatados.index') }}" class="btn btn-volver" >
                 Volver
             </a>
         </div>

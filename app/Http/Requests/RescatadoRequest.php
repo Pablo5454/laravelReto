@@ -22,7 +22,14 @@ class RescatadoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "nombre" => 'required',
+            "foto" => 'required',
+            "edad" => 'required',
+            "sexo" => 'required',
+            "procedencia" => 'required',
+            "valoracion_medica" => 'required',
+            "medico_id",
+            "rescate_id"
         ];
     }
 }

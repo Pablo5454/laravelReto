@@ -2,15 +2,7 @@
 <link href="{{ asset('css/formulario.css') }}" rel="stylesheet">
     @include('_partials.menu')
     <br>
-    <a href="{{route('medicos.create')}}" class="btn ms-3" style="
-    background-color: #ffdd59;
-    color: #333;
-    font-weight: bold;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    text-decoration: none;
-    transition: background-color 0.3s ease;">Crear nuevo rescatado</a>
+    <a href="{{route('rescatados.create')}}" class="btn-crear btn ms-3">Crear nuevo rescatado</a>
 <br><br>
     <table class="table table-striped">
         <thead>
@@ -27,42 +19,18 @@
                     <td>{{ $rescatado->nombre }}</td>
                     
                     <td>
-                        <a href="{{ route('rescatados.show', $rescatado->id) }}" class="btn btn-info btn-sm" style="
-                            padding: 5px 10px;
-                            font-size: 0.875rem;
-                            font-weight: bold;
-                            border: none;
-                            background-color: #17a2b8;
-                            color: white;
-                            text-decoration: none;
-                            transition: background-color 0.3s ease;">
+                        <a href="{{ route('rescatados.show', $rescatado->id) }}" class="btn-accion btn-accion-info btn-base" >
                             Ver
                         </a>
                         
-                        <a href="{{ route('rescatados.edit', $rescatado->id) }}" class="btn btn-warning btn-sm" style="
-                            padding: 5px 10px;
-                            font-size: 0.875rem;
-                            font-weight: bold;
-                            border: none;
-                            background-color: #ffc107;
-                            color: white;
-                            text-decoration: none;
-                            transition: background-color 0.3s ease;">
+                        <a href="{{ route('rescatados.edit', $rescatado->id) }}" class="btn-accion btn-accion-warning btn-base" >
                             Editar
                         </a>
                         
                         <form class="no-style-form" action="{{ route('rescatados.destroy', $rescatado->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm" style="
-                                padding: 5px 10px;
-                                font-size: 0.875rem;
-                                font-weight: bold;
-                                border: none;
-                                background-color: #dc3545;
-                                color: white;
-                                cursor: pointer;
-                                transition: background-color 0.3s ease;">
+                            <button type="submit" class="btn-accion btn-accion-danger btn-base" >
                                 Eliminar
                             </button>
                         </form>

@@ -22,7 +22,8 @@ class RescateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "fecha_inicio"=>'required',
+            "fecha_fin"=>'required'
         ];
     }
 }

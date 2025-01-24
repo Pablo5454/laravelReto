@@ -22,7 +22,11 @@ class TripulanteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "nombre"=>'required', 
+            "apellido"=>'required', 
+            "rol"=>'required',
+            "fecha_incorporacion"=>'required',
+            "viaje_id"
         ];
     }
 }
