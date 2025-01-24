@@ -94,13 +94,18 @@ body {
     margin: 0 auto;
 }
 
-/* form {
-    padding: 10px;
-    border: 1px solid #ccc;
-} */
-
-
 .no-style-form {
     all: unset; 
     display: block; 
+}
+.navbar a,
+.navbar button {
+    font-family: 'Merriweather', serif;
+    font-size: 1.2rem;
+}
+
+.btn-logout {
+    font-size: 1rem;
+    padding: 10px 20px;
+    min-width: 150px;
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\MedicoRequest;
 use App\Models\Medico;
 
 class MedicoController extends Controller
@@ -40,7 +41,7 @@ class MedicoController extends Controller
      * Store a newly created resource in storage.
      */
 
-    public function store(Request $request)
+    public function store(MedicoRequest $request)
     {
         Medico::create([
             'nombre'=>$request->nombre,
@@ -73,7 +74,7 @@ class MedicoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Medico $medico)
+    public function update(MedicoRequest $request, Medico $medico)
     {
         $medico -> update($request -> all());
 

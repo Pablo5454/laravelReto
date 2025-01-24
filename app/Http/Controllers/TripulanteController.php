@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tripulante;
+use App\Http\Requests\TripulanteRequest;
+
 
 
 class TripulanteController extends Controller
@@ -30,7 +32,7 @@ class TripulanteController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TripulanteRequest $request)
     {
         Tripulante::create([
             'nombre'=>$request->nombre,
@@ -64,7 +66,7 @@ class TripulanteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Tripulante $tripulante)
+    public function update(TripulanteRequest $request, Tripulante $tripulante)
     {
         $tripulante -> update($request -> all());
 

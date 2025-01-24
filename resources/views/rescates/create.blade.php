@@ -1,4 +1,5 @@
-
+@include('_partials.inicio')
+<link href="{{ asset('css/formulario.css') }}" rel="stylesheet">
     @include('_partials.menu')
     <br>
     <form action="{{route('rescates.store')}}" method="post">

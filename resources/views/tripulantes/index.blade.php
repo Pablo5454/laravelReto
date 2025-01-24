@@ -1,4 +1,5 @@
-
+@include('_partials.inicio')
+<link href="{{ asset('css/formulario.css') }}" rel="stylesheet">
     @include('_partials.menu')
     <br>
     <a href="{{route('medicos.create')}}" class="btn ms-3" style="

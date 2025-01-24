@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Viaje;
-
+use App\Http\Requests\ViajeRequest;
 
 class ViajeController extends Controller
 {
@@ -32,7 +32,7 @@ class ViajeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ViajeRequest $request)
     {
         //
         // Viaje::create([
@@ -67,7 +67,7 @@ class ViajeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Viaje $viaje)
+    public function update(ViajeRequest $request, Viaje $viaje)
     {
         //
         $viaje -> update($request -> all());

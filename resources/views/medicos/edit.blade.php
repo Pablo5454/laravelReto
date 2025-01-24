@@ -1,4 +1,6 @@
 
+@include('_partials.inicio')
+<link href="{{ asset('css/formulario.css') }}" rel="stylesheet">
     @include('_partials.menu')
     <br>
     <form action="{{route('medicos.update', $medico -> id)}}" method="post">

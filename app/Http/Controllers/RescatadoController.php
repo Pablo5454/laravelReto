@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\RescatadoRequest;
 
 use Illuminate\Http\Request;
 use App\Models\Rescatado;
@@ -28,7 +29,7 @@ class RescatadoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(RescatadoRequest $request)
     {
         Rescatado::create([
             'nombre'=>$request->nombre,
@@ -64,7 +65,7 @@ class RescatadoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Rescatado $rescatado)
+    public function update(RescatadoRequest $request, Rescatado $rescatado)
     {
         $rescatado -> update($request -> all());
 

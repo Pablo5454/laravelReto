@@ -7,6 +7,8 @@
     <title>Document</title>
 </head>
 <body>
+    @include('_partials.inicio')
+    <link href="{{ asset('css/formulario.css') }}" rel="stylesheet">
     @include('_partials.menu')
 
 </body>

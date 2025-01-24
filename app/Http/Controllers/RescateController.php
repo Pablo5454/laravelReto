@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Rescate;
 use App\Models\Viaje;
+use App\Http\Requests\RescateRequest;
+
 
 
 
@@ -32,7 +34,7 @@ class RescateController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(RescateRequest $request)
     {
         Rescate::create([
             'fecha_inicio'=>$request->fechaInicio,
@@ -61,7 +63,7 @@ class RescateController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Rescate $rescate)
+    public function update(RescateRequest $request, Rescate $rescate)
     {
         $rescate -> update($request -> all());
 
