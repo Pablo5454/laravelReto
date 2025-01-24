@@ -1,0 +1,106 @@
+
+form {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+
+form label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="submit"],
+form textarea,
+form select {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus,
+form textarea:focus,
+form select:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(72, 189, 77, 0.5);
+    outline: none;
+}
+
+form input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    padding: 12px 20px;
+    font-size: 1rem;
+    margin-top: 15px;
+    border-radius: 8px;
+}
+
+
+form input[type="submit"]:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+
+form .error {
+    color: #ff4d4d;
+    font-size: 0.875rem;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+
+form select {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+
+body {
+    background-color: #e6f2ff;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    padding: 50px 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* form {
+    padding: 10px;
+    border: 1px solid #ccc;
+} */
+
+
+.no-style-form {
+    all: unset; 
+    display: block; 
+}

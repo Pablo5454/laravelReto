@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+
     @include('_partials.menu')
     <br>
     <form action="{{route('viajes.store')}}" method="post">
@@ -16,8 +8,8 @@
         <label>Destino:</label>
         <input type="text" name="destino"/>
 
-        <div class="d-flex justify-content-center align-items-center">
-            <!-- Botón Crear -->
+        <div class="d-flex justify-content-center align-items-center" style="height: 10vh;">
+
             <input type="submit" value="Crear" style="
                 background-color: #4CAF50; 
                 color: white;
@@ -33,8 +25,7 @@
                 onmouseover="this.style.backgroundColor='#45a049'; this.style.transform='scale(1.05)';"
                 onmouseout="this.style.backgroundColor='#4CAF50'; this.style.transform='scale(1)';"
             />
-
-
+        
             <a href="{{ route('viajes.index') }}" class="btn" style="
                 background-color: #ffdd59;
                 color: #333;
