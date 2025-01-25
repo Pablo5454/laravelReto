@@ -36,7 +36,6 @@ class MedicoController extends Controller
         // $medico -> save();
         $viajes = Viaje::all();
 
-
         return view('medicos.create', compact('viajes'));
     }
 
@@ -55,8 +54,7 @@ class MedicoController extends Controller
         ]);
         // Medico::create($request->all());
 
-        return redirect()->route('medicos.index');
-        
+        return redirect()->route('medicos.index')->with('success', '¡Médico creado con éxito!');        
     }
 
     /**
@@ -72,7 +70,9 @@ class MedicoController extends Controller
      */
     public function edit(Medico $medico)
     {
-        return view('medicos.edit', compact('medico'));
+        $viajes = Viaje::all();
+
+        return view('medicos.edit', compact('medico', 'viajes'));
     }
 
     /**
@@ -80,10 +80,16 @@ class MedicoController extends Controller
      */
     public function update(MedicoRequest $request, Medico $medico)
     {
-        $medico -> update($request -> all());
-
-        return redirect()->route('medicos.index');
+        $medico->nombre = $request->nombre;
+        $medico->apellido = $request->apellido;
+        $medico->fecha_incorporacion = $request->fecha_incorporacion;
+        $medico->viaje_id = $request->viaje_id;
+    
+        $medico->save();
+    
+        return redirect()->route('medicos.index')->with('success', 'Médico actualizado con éxito!');
     }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -91,6 +97,6 @@ class MedicoController extends Controller
     public function destroy(Medico $medico)
     {
         $medico -> delete();
-        return redirect() -> route('medicos.index');
+        return redirect() -> route('medicos.index')->with('success', '¡Médico eliminado con éxito!');
     }
 }

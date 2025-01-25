@@ -39,6 +39,7 @@
                 <a href="{{ route('medicos.index') }}" class="btn btn-volver">Volver</a>
             </div>
         </form>
+        
 
 </body>
 </html>

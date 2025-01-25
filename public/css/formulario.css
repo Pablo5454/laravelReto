@@ -286,6 +286,7 @@ nav.navbar {
     flex: 1; 
 }
 
+
 @media (max-width: 768px) {
     .navbar .container {
         flex-direction: column;

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Viaje;
+use App\Models\Rescate;
+
 use App\Http\Requests\ViajeRequest;
 
 class ViajeController extends Controller
@@ -25,7 +27,8 @@ class ViajeController extends Controller
     public function create()
     {
         //
-        return view('viajes.create');
+        $rescates = Rescate::all();
+        return view('viajes.create', compact('rescates'));
 
     }
 
@@ -41,7 +44,7 @@ class ViajeController extends Controller
         // ]);
         Viaje::create($request->all());
 
-        return redirect()->route('viajes.index');
+        return redirect()->route('viajes.index')->with('success', 'Viaje creado con éxito!');
         
     }
 
@@ -59,8 +62,9 @@ class ViajeController extends Controller
      */
     public function edit(Viaje $viaje)
     {
-        //
-        return view('viajes.edit', compact('viaje'));
+        $rescates = Rescate::all();
+
+        return view('viajes.edit', compact('viaje', 'rescates'));
 
     }
 
@@ -72,7 +76,7 @@ class ViajeController extends Controller
         //
         $viaje -> update($request -> all());
 
-        return redirect()->route('viajes.index');
+        return redirect()->route('viajes.index')->with('success', 'Médico actualizado con éxito!');
     }
 
     /**
@@ -82,6 +86,6 @@ class ViajeController extends Controller
     {
         //
         $viaje -> delete();
-        return redirect() -> route('viajes.index');
+        return redirect() -> route('viajes.index')->with('success', '¡Viaje eliminado con éxito!');
     }
 }

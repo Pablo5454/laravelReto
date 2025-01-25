@@ -9,6 +9,8 @@
                 <th>ID</th>
                 <th>Origen</th>
                 <th>Destino</th>
+                <th>Rescate</th>
+
             </tr>
         </thead>
         <tbody>
@@ -16,6 +18,8 @@
                     <td>{{ $viaje->id }}</td>
                     <td>{{ $viaje->origen }}</td>
                     <td>{{ $viaje->destino }}</td>
+                    <td>{{ $viaje->rescate_id }}</td>
+
             
                 </tr>
         </tbody>

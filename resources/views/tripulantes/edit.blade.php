@@ -12,9 +12,14 @@
         <label>Rol:</label>
         <input type="text" name="rol" value="{{$tripulante->rol}}"/>
         <label>Fecha de incorporación:</label>
-        <input type="text" name="fechaIncorporacion" value="{{$tripulante->fechaIncorporacion}}"/>
+        <input type="text" name="fecha_incorporacion" value="{{$tripulante->fecha_incorporacion}}"/>
         <label>Viaje:</label>
-        <input type="text" name="viajeId" value="{{$tripulante->viajeId}}"/>
+        <select name="viaje_id">
+            <option value="{{$tripulante->viaje_id}}" disabled selected>{{$tripulante->viaje_id}}</option>
+            @foreach ($viajes as $viaje)
+                <option value="{{ $viaje->id }}">{{ $viaje->id }} : {{ $viaje->origen }} - {{ $viaje->destino }}</option>
+            @endforeach
+        </select>
         <input type="submit" value="Editar"/>
 
     </form>

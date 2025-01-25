@@ -9,13 +9,17 @@
                 <th>ID</th>
                 <th>Fecha inicio</th>
                 <th>Fecha fin</th>
+                <th>Viaje</th>
+
             </tr>
         </thead>
         <tbody>
                 <tr>
                     <td>{{ $rescate->id }}</td>
-                    <td>{{ $rescate->fechaInicio }}</td>
-                    <td>{{ $rescate->fechaFin }}</td>
+                    <td>{{ $rescate->fecha_inicio }}</td>
+                    <td>{{ $rescate->fecha_fin }}</td>
+                    <td>{{ $rescate->viaje_id }}</td>
+
             
                 </tr>
         </tbody>

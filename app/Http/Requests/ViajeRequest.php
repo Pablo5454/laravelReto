@@ -23,7 +23,8 @@ class ViajeRequest extends FormRequest
     {
         return [
             'origen'=>'required',
-            'destino'=>'required'
+            'destino'=>'required',
+            'rescate_id'=>'required'
         ];
     }
 }

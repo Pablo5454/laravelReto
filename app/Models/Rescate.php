@@ -11,6 +11,7 @@ class Rescate extends Model
 
     protected $fillable =[
         "fecha_inicio",
-        "fecha_fin"
+        "fecha_fin",
+        "viaje_id"
     ];
 }

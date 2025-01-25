@@ -46,7 +46,7 @@ class RescatadoController extends Controller
             'rescate_id'=>$request->rescate_id
         ]);
 
-        return redirect()->route('rescatados.index');
+        return redirect()->route('rescatados.index')->with('success', 'Rescatado creado con éxito!');
     }
 
     /**
@@ -63,7 +63,9 @@ class RescatadoController extends Controller
      */
     public function edit(Rescatado $rescatado)
     {
-        return view('rescatados.edit', compact('rescatado'));
+        $medicos = Medico::all();
+        $rescates = Rescate::all();
+        return view('rescatados.edit', compact('rescatado', 'medicos', 'rescates'));
     }
 
     /**
@@ -73,7 +75,7 @@ class RescatadoController extends Controller
     {
         $rescatado -> update($request -> all());
 
-        return redirect()->route('rescatados.index');
+        return redirect()->route('rescatados.index')->with('success', 'Rescatado actualizado con éxito!');
     }
 
     /**
@@ -82,6 +84,6 @@ class RescatadoController extends Controller
     public function destroy(Rescatado $rescatado)
     {
         $rescatado -> delete();
-        return redirect() -> route('rescatados.index');
+        return redirect() -> route('rescatados.index')->with('success', '¡Rescatado eliminado con éxito!');
     }
 }

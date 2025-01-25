@@ -14,13 +14,18 @@
         @error('fecha_fin')
         <div class="text-danger">Campo requerido</div>
         @enderror
-        <ul>
-@foreach ($viajes as $viaje)
-    <li>{{ $viaje->id }}</li>
-@endforeach
-</ul>
-<div class="d-flex justify-content-center align-items-center">
-    <input type="submit" value="Crear" 
+        <label>Viaje:</label>
+            <select name="viaje_id">
+                <option value="" disabled selected>Selecciona un viaje</option>
+                @foreach ($viajes as $viaje)
+                    <option value="{{ $viaje->id }}">{{ $viaje->id }} : {{ $viaje->origen }} - {{ $viaje->destino }}</option>
+                @endforeach
+            </select>
+            @error('viaje_id')
+            <div class="text-danger">Campo requerido</div>
+            @enderror
+    <div class="d-flex justify-content-center align-items-center">
+        <input type="submit" value="Crear" 
     />
 
 

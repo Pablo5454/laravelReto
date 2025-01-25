@@ -11,9 +11,14 @@
         <label>Apellido:</label>
         <input type="text" name="apellido" value="{{$medico->apellido}}"/>
         <label>Fecha de incorporación:</label>
-        <input type="text" name="fechaIncorporacion" value="{{$medico->fechaIncorporacion}}"/>
+        <input type="text" name="fecha_incorporacion" value="{{$medico->fecha_incorporacion}}"/>
         <label>Viaje:</label>
-        <input type="text" name="viajeId" value="{{$medico->viajeId}}"/>
+            <select name="viaje_id">
+                <option value="{{$medico->viaje_id}}" disabled selected>{{$medico->viaje_id}}</option>
+                @foreach ($viajes as $viaje)
+                    <option value="{{ $viaje->id }}">{{ $viaje->id }} : {{ $viaje->origen }} - {{ $viaje->destino }}</option>
+                @endforeach
+            </select>
         <input type="submit" value="Editar"/>
 
     </form>

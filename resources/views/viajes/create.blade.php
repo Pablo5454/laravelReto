@@ -14,6 +14,16 @@
         @error('destino')
         <div class="text-danger">Campo requerido</div>
         @enderror
+        <label>Rescate:</label>
+            <select name="rescate_id">
+                <option value="" disabled selected>Selecciona un rescate</option>
+                @foreach ($rescates as $rescate)
+                    <option value="{{ $rescate->id }}">{{ $rescate->id }}</option>
+                @endforeach
+            </select>
+            @error('rescate_id')
+            <div class="text-danger">Campo requerido</div>
+            @enderror
 
         <div class="d-flex justify-content-center align-items-center" style="height: 10vh;">
 

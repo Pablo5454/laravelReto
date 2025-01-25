@@ -19,9 +19,19 @@
         <label>Valoración médica:</label>
         <input type="text" name="valoracion_medica" value="{{$rescatado->valoracion_medica}}"/>
         <label>Médico Id:</label>
-        <input type="text" name="medico_id" value="{{$rescatado->medico_id}}"/>
+        <select name="medico_id">
+            <option value="{{$rescatado->medico_id}}" disabled selected>{{$rescatado->medico_id}}</option>
+            @foreach ($medicos as $medico)
+                <option value="{{ $medico->id }}">{{ $medico->id }} : {{ $medico->nombre }} </option>
+            @endforeach
+        </select>
         <label>Rescate Id:</label>
-        <input type="text" name="rescate_id" value="{{$rescatado->rescate_id}}"/>
+        <select name="rescate_id">
+            <option value="{{$rescatado->rescate_id}}" disabled selected>{{$rescatado->rescate_id}}</option>
+            @foreach ($rescates as $rescate)
+                <option value="{{ $rescate->id }}">{{ $rescate->id }}</option>
+            @endforeach
+        </select>
 
         <input type="submit" value="Editar"/>
 

@@ -9,6 +9,13 @@
         <input type="text" name="origen" value="{{$viaje->origen}}"/>
         <label>Destino:</label>
         <input type="text" name="destino" value="{{$viaje->destino}}"/>
+        <label>Rescate:</label>
+        <select name="rescate_id">
+            <option value="{{$viaje->rescate_id}}" disabled selected>{{$viaje->rescate_id}}</option>
+            @foreach ($rescates as $rescate)
+                <option value="{{ $rescate->id }}">{{ $rescate->id }}</option>
+            @endforeach
+        </select>
         <input type="submit" value="Editar"/>
 
     </form>

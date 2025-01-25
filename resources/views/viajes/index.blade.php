@@ -2,15 +2,7 @@
 <link href="{{ asset('css/formulario.css') }}" rel="stylesheet">
     @include('_partials.menu')
     <br>
-    <a href="{{route('viajes.create')}}" class="btn-crear btn ms-3" style="
-    background-color: #ffdd59;
-    color: #333;
-    font-weight: bold;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    text-decoration: none;
-    transition: background-color 0.3s ease;">Crear nuevo viaje</a>
+    <a href="{{route('viajes.create')}}" class="btn-crear btn ms-3" >Crear nuevo viaje</a>
     <br><br>
     <table class="table table-striped">
         <thead>
@@ -50,6 +42,17 @@
         </tbody>
     </table>
     @include('_partials.foot')
-
+    @if (session('success'))
+    <script>
+        Swal.fire({
+            title: '{{ session('success') }}',
+            icon: 'success',
+            confirmButtonText: 'Cerrar',
+            html: `
+                <img src="https://i.pinimg.com/originals/c9/9c/98/c99c98936a66370a09589509ca274001.gif" alt="Cristo GIF" style="width: 50%; max-width: 250px;" alt="Success GIF" width="100%">
+            `
+        });
+    </script>
+@endif
 </body>
 </html>

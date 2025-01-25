@@ -23,7 +23,8 @@ class RescateRequest extends FormRequest
     {
         return [
             "fecha_inicio"=>'required',
-            "fecha_fin"=>'required'
+            "fecha_fin"=>'required',
+            "viaje_id"=>'required'
         ];
     }
 }

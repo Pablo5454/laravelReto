@@ -37,11 +37,11 @@ class RescateController extends Controller
     public function store(RescateRequest $request)
     {
         Rescate::create([
-            'fecha_inicio'=>$request->fechaInicio,
-            'fecha_fin'=>$request->fechaFin,
-            'viaje'=>$request->viaje
+            'fecha_inicio'=>$request->fecha_inicio,
+            'fecha_fin'=>$request->fecha_fin,
+            'viaje_id'=>$request->viaje_id
         ]);
-        return redirect()->route('rescates.index');
+        return redirect()->route('rescates.index')->with('success', 'Rescate creado con éxito!');
     }
 
     /**
@@ -57,7 +57,9 @@ class RescateController extends Controller
      */
     public function edit(Rescate $rescate)
     {
-        return view('rescates.edit', compact('rescate'));
+        $viajes = Viaje::all();
+
+        return view('rescates.edit', compact('rescate', 'viajes'));
     }
 
     /**
@@ -67,7 +69,7 @@ class RescateController extends Controller
     {
         $rescate -> update($request -> all());
 
-        return redirect()->route('rescates.index');    }
+        return redirect()->route('rescates.index')->with('success', 'Rescate actualizado con éxito!');    }
 
     /**
      * Remove the specified resource from storage.
@@ -75,5 +77,5 @@ class RescateController extends Controller
     public function destroy(Rescate $rescate)
     {
         $rescate -> delete();
-        return redirect() -> route('rescates.index');    }
+        return redirect() -> route('rescates.index')->with('success', '¡Rescate eliminado con éxito!');    }
 }

@@ -46,7 +46,7 @@ class TripulanteController extends Controller
         ]);
         // Tripulante::create($request->all());
 
-        return redirect()->route('tripulantes.index');
+        return redirect()->route('tripulantes.index')->with('success', 'Tripulante creado con éxito!');
      
     }
 
@@ -63,7 +63,9 @@ class TripulanteController extends Controller
      */
     public function edit(Tripulante $tripulante)
     {
-        return view('tripulantes.edit', compact('tripulante'));
+        $viajes = Viaje::all();
+
+        return view('tripulantes.edit', compact('tripulante', 'viajes'));
     }
 
     /**
@@ -73,7 +75,7 @@ class TripulanteController extends Controller
     {
         $tripulante -> update($request -> all());
 
-        return redirect()->route('tripulantes.index');
+        return redirect()->route('tripulantes.index')->with('success', 'Tripulante actualizado con éxito!');
     }
 
     /**
@@ -82,6 +84,6 @@ class TripulanteController extends Controller
     public function destroy(Tripulante $tripulante)
     {
         $tripulante -> delete();
-        return redirect() -> route('tripulantes.index');
+        return redirect() -> route('tripulantes.index')->with('success', '¡Tripulante eliminado con éxito!');
     }
 }
