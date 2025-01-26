@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Tripulante;
 use App\Http\Requests\TripulanteRequest;
-
 use App\Models\Viaje;
 
 

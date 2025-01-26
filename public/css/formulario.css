@@ -151,7 +151,7 @@ body {
     padding: 5px;
     border-radius: 5px;
 }
-.btn-crear {
+/* .btn-crear {
     background-color: #ffdd59;
     color: #333;
     font-weight: bold;
@@ -164,7 +164,7 @@ body {
 
 .btn-crear:hover {
     background-color: #ffc400;
-}
+} */
 
 .btn-accion {
     padding: 5px 10px;

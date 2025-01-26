@@ -80,12 +80,16 @@ class MedicoController extends Controller
      */
     public function update(MedicoRequest $request, Medico $medico)
     {
-        $medico->nombre = $request->nombre;
-        $medico->apellido = $request->apellido;
-        $medico->fecha_incorporacion = $request->fecha_incorporacion;
-        $medico->viaje_id = $request->viaje_id;
+        // $medico->nombre = $request->nombre;
+        // $medico->apellido = $request->apellido;
+        // $medico->fecha_incorporacion = $request->fecha_incorporacion;
+        // $medico->viaje_id = $request->viaje_id;
     
-        $medico->save();
+        // $medico->save();
+
+        
+        $medico -> update($request -> all());
+
     
         return redirect()->route('medicos.index')->with('success', 'Médico actualizado con éxito!');
     }

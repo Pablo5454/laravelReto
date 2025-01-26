@@ -76,7 +76,7 @@ class ViajeController extends Controller
         //
         $viaje -> update($request -> all());
 
-        return redirect()->route('viajes.index')->with('success', 'Médico actualizado con éxito!');
+        return redirect()->route('viajes.index')->with('success', 'Viaje actualizado con éxito!');
     }
 
     /**

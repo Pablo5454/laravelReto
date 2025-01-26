@@ -1,6 +1,10 @@
-@include('_partials.inicio')
 <link href="{{ asset('css/formulario.css') }}" rel="stylesheet">
-    @include('_partials.menu')
+
+@include('_partials.inicio')
+
+<link href="{{ asset('css/boton.css') }}" rel="stylesheet">
+
+@include('_partials.menu')
     <br>
     <a href="{{route('rescates.create')}}" class="btn-crear btn ms-3">Crear nuevo rescate</a>
     <br><br>

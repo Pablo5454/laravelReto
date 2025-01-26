@@ -1,5 +1,9 @@
-@include('_partials.inicio')
 <link href="{{ asset('css/formulario.css') }}" rel="stylesheet">
+
+@include('_partials.inicio')
+
+<link href="{{ asset('css/boton.css') }}" rel="stylesheet">
+
 @include('_partials.menu')
 <br>
 

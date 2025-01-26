@@ -8,13 +8,10 @@ use App\Http\Controllers\ViajeController;
 use App\Http\Controllers\RescatadoController;
 use App\Http\Controllers\RescateController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -25,8 +22,10 @@ Route::middleware('auth')->group(function () {
         return redirect('/dashboard');
     });
     
-    
-    Route::view('/dashboard', 'principal') -> name('dashboard');
+    Route::get('/dashboard', function () {
+        return view('principal');
+    })->name('dashboard');
+    // Route::view('/dashboard', 'principal') -> name('dashboard');
     
     
     // Rutas para Médicos
