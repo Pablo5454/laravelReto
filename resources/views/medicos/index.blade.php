@@ -1,10 +1,14 @@
-{{-- @extends('layouts.app')
+<link href="{{ asset('css/formulario.css') }}" rel="stylesheet">
 
-@section('title', 'Lista de Médicos')
+@include('_partials.inicio')
 
-@section('content')
-<h1>Lista de Médicos</h1>
-<a href="{{ route('medicos.create') }}" class="btn btn-primary mb-3">Añadir Médico</a>
+<link href="{{ asset('css/boton.css') }}" rel="stylesheet">
+
+@include('_partials.menu')
+<br>
+
+<a href="{{route('medicos.create')}}" class="btn-crear btn ms-3">Crear nuevo médico</a>
+<br><br>
 
 <table class="table table-striped">
     <thead>
@@ -12,8 +16,6 @@
             <th>ID</th>
             <th>Nombre</th>
             <th>Apellido</th>
-            <th>Fecha de Incorporación</th>
-            <th>Viaje Asociado</th>
             <th>Acciones</th>
         </tr>
     </thead>
@@ -23,63 +25,43 @@
                 <td>{{ $medico->id }}</td>
                 <td>{{ $medico->nombre }}</td>
                 <td>{{ $medico->apellido }}</td>
-                <td>{{ $medico->fecha_incorporacion }}</td>
-                <td>{{ $medico->viaje_id }}</td>
                 <td>
-                    <a href="{{ route('medicos.show', $medico->id) }}" class="btn btn-info btn-sm">Ver</a>
-                    <a href="{{ route('medicos.edit', $medico->id) }}" class="btn btn-warning btn-sm">Editar</a>
-                    <form action="{{ route('medicos.destroy', $medico->id) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                    </form>
+                    <!-- Contenedor Flex para alinear los botones -->
+                    <div class="d-flex gap-2">
+                        <a href="{{ route('medicos.show', $medico->id) }}" class="btn-accion btn-accion-info btn-base">
+                            Ver
+                        </a>
+                        <a href="{{ route('medicos.edit', $medico->id) }}" class="btn-accion btn-accion-warning btn-base">
+                            Editar
+                        </a>
+                        <form class="no-style-form" action="{{ route('medicos.destroy', $medico->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn-accion btn-accion-danger btn-base">
+                                Eliminar
+                            </button>
+                        </form>
+                    </div>
                 </td>
             </tr>
         @endforeach
     </tbody>
 </table>
-@endsection --}}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <a href="{{route('medicos.create')}}">Crear nuevo médico</a>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Fecha de Incorporación</th>
-                <th>Viaje Asociado</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($medicos as $medico)
-                <tr>
-                    <td>{{ $medico->id }}</td>
-                    <td>{{ $medico->nombre }}</td>
-                    <td>{{ $medico->apellido }}</td>
-                    <td>{{ $medico->fecha_incorporacion }}</td>
-                    <td>{{ $medico->viaje_id }}</td>
-                    <td>
-                        <a href="{{ route('medicos.show', $medico->id) }}" class="btn btn-info btn-sm">Ver</a>
-                        <a href="{{ route('medicos.edit', $medico->id) }}" class="btn btn-warning btn-sm">Editar</a>
-                        <form action="{{ route('medicos.destroy', $medico->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+
+@include('_partials.foot')
+
+@if (session('success'))
+    <script>
+        Swal.fire({
+            title: '{{ session('success') }}',
+            icon: 'success',
+            confirmButtonText: 'Cerrar',
+            html: `
+                <img src="https://i.pinimg.com/originals/c9/9c/98/c99c98936a66370a09589509ca274001.gif" alt="Cristo GIF" style="width: 50%; max-width: 250px;" alt="Success GIF" width="100%">
+            `
+        });
+    </script>
+@endif
+
 </body>
 </html>

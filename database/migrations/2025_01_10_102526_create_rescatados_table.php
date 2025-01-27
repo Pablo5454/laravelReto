@@ -19,8 +19,8 @@ return new class extends Migration
             $table-> string('sexo', 255);
             $table-> string('procedencia' , 255);
             $table-> string('valoracion_medica' , 255);
-            $table->foreignId('medico_id');
-            $table->foreignId('rescate_id');
+            $table->integer('medico_id');
+            $table->integer('rescate_id');
             $table->timestamps();
 
         });

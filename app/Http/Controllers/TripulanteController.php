@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Tripulante;
+use App\Http\Requests\TripulanteRequest;
+use App\Models\Viaje;
+
 
 class TripulanteController extends Controller
 {
@@ -11,7 +15,9 @@ class TripulanteController extends Controller
      */
     public function index()
     {
-        //
+        $tripulantes = Tripulante::all();
+        return view('tripulantes.index', compact('tripulantes'));
+    
     }
 
     /**
@@ -19,46 +25,64 @@ class TripulanteController extends Controller
      */
     public function create()
     {
-        //
+        $viajes = Viaje::all();
+
+        return view('tripulantes.create', compact('viajes'));
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TripulanteRequest $request)
     {
-        //
+        Tripulante::create([
+            'nombre'=>$request->nombre,
+            'apellido'=>$request->apellido,
+            'rol'=>$request->rol,
+            'fecha_incorporacion'=>$request->fecha_incorporacion,
+            'viaje_id'=>$request->viaje_id
+        ]);
+        // Tripulante::create($request->all());
+
+        return redirect()->route('tripulantes.index')->with('success', 'Tripulante creado con éxito!');
+     
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Tripulante $tripulante)
     {
-        //
+        return view('tripulantes.show', compact('tripulante'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Tripulante $tripulante)
     {
-        //
+        $viajes = Viaje::all();
+
+        return view('tripulantes.edit', compact('tripulante', 'viajes'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(TripulanteRequest $request, Tripulante $tripulante)
     {
-        //
+        $tripulante -> update($request -> all());
+
+        return redirect()->route('tripulantes.index')->with('success', 'Tripulante actualizado con éxito!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Tripulante $tripulante)
     {
-        //
+        $tripulante -> delete();
+        return redirect() -> route('tripulantes.index')->with('success', '¡Tripulante eliminado con éxito!');
     }
 }

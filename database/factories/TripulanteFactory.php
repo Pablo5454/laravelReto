@@ -20,7 +20,7 @@ class TripulanteFactory extends Factory
             'nombre' =>fake()->name(),
             'apellido' =>fake()->name(),
             'fecha_incorporacion'=>fake()->date(),
-            'rol'=>fake()->randomElement(['capitan', 'jefe de maquinas','mecanico', 'oficial de puente', 'marineros', 'personal de enfermeria']),
+            'rol'=>fake()->randomElement(['Capitán', 'Jefe de máquinas','Mecánico', 'Oficial de puente', 'Marinero', 'Personal de enfermería']),
             'viaje_id'=>fake()->randomDigitNotNull(),
         ];
     }

@@ -1,0 +1,14 @@
+.btn-crear {
+    background-color: #ffdd59;
+    color: #333;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-crear:hover {
+    background-color: #ffc400;
+}

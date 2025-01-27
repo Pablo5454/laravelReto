@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\MedicoRequest;
 use App\Models\Medico;
+use App\Models\Viaje;
+
 
 class MedicoController extends Controller
 {
@@ -31,51 +34,66 @@ class MedicoController extends Controller
         // $medico -> viaje_id = "01";
 
         // $medico -> save();
+        $viajes = Viaje::all();
 
-        return view('medicos.create');
+        return view('medicos.create', compact('viajes'));
     }
+
 
     /**
      * Store a newly created resource in storage.
      */
 
-    public function store(Request $request)
+    public function store(MedicoRequest $request)
     {
         Medico::create([
             'nombre'=>$request->nombre,
             'apellido'=>$request->apellido,
-            'fecha_incorporacion'=>$request->fechaIncorporacion,
-            'viaje_id'=>$request->viajeId
+            'fecha_incorporacion'=>$request->fecha_incorporacion,
+            'viaje_id'=>$request->viaje_id
         ]);
         // Medico::create($request->all());
 
-        return redirect()->route('medicos.index');
-        
+        return redirect()->route('medicos.index')->with('success', '¡Médico creado con éxito!');        
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Medico $medico)
     {
-        //
+        return view('medicos.show', compact('medico'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Medico $medico)
     {
-        //
+        $viajes = Viaje::all();
+
+        return view('medicos.edit', compact('medico', 'viajes'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(MedicoRequest $request, Medico $medico)
     {
-        //
+        // $medico->nombre = $request->nombre;
+        // $medico->apellido = $request->apellido;
+        // $medico->fecha_incorporacion = $request->fecha_incorporacion;
+        // $medico->viaje_id = $request->viaje_id;
+    
+        // $medico->save();
+
+        
+        $medico -> update($request -> all());
+
+    
+        return redirect()->route('medicos.index')->with('success', 'Médico actualizado con éxito!');
     }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -83,6 +101,6 @@ class MedicoController extends Controller
     public function destroy(Medico $medico)
     {
         $medico -> delete();
-        return redirect() -> route('medicos.index');
+        return redirect() -> route('medicos.index')->with('success', '¡Médico eliminado con éxito!');
     }
 }

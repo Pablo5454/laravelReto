@@ -1,35 +1,62 @@
-@extends('layouts.app')
+<link href="{{ asset('css/formulario.css') }}" rel="stylesheet">
 
-@section('title', 'Lista de Tripulantes')
+@include('_partials.inicio')
 
-@section('content')
-<h1>Lista de Tripulantes</h1>
-<a href="{{ route('tripulantes.create') }}" class="btn btn-primary mb-3">Añadir Tripulante</a>
+<link href="{{ asset('css/boton.css') }}" rel="stylesheet">
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Rol</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($tripulantes as $tripulante)
+@include('_partials.menu')
+    <br>
+    <a href="{{route('tripulantes.create')}}" class="btn-crear btn ms-3" >Crear nuevo tripulante</a>
+<br><br>
+    <table class="table table-striped">
+        <thead>
             <tr>
-                <td>{{ $tripulante->nombre }}</td>
-                <td>{{ $tripulante->rol }}</td>
-                <td>
-                    <a href="{{ route('tripulantes.show', $tripulante->id) }}" class="btn btn-info btn-sm">Ver</a>
-                    <a href="{{ route('tripulantes.edit', $tripulante->id) }}" class="btn btn-warning btn-sm">Editar</a>
-                    <form action="{{ route('tripulantes.destroy', $tripulante->id) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                    </form>
-                </td>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Acciones</th>
             </tr>
-        @endforeach
-    </tbody>
-</table>
-@endsection
+        </thead>
+        <tbody>
+            @foreach ($tripulantes as $tripulante)
+                <tr>
+                    <td>{{ $tripulante->id }}</td>
+                    <td>{{ $tripulante->nombre }}</td>
+                    <td>{{ $tripulante->apellido }}</td>
+                    <td>
+                        <a href="{{ route('tripulantes.show', $tripulante->id) }}" class="btn-accion btn-accion-info btn-base">
+                            Ver
+                        </a>
+                        
+                        <a href="{{ route('tripulantes.edit', $tripulante->id) }}" class="btn-accion btn-accion-warning btn-base">
+                            Editar
+                        </a>
+                        
+                        <form class="no-style-form" action="{{ route('tripulantes.destroy', $tripulante->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn-accion btn-accion-danger btn-base">
+                                Eliminar
+                            </button>
+                        </form>
+                        
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+    @include('_partials.foot')
+    @if (session('success'))
+    <script>
+        Swal.fire({
+            title: '{{ session('success') }}',
+            icon: 'success',
+            confirmButtonText: 'Cerrar',
+            html: `
+                <img src="https://i.pinimg.com/originals/c9/9c/98/c99c98936a66370a09589509ca274001.gif" alt="Cristo GIF" style="width: 50%; max-width: 250px;" alt="Success GIF" width="100%">
+            `
+        });
+    </script>
+@endif
+</body>
+</html>

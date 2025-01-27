@@ -1,8 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\RescatadoRequest;
 
 use Illuminate\Http\Request;
+use App\Models\Rescatado;
+use App\Models\Medico;
+use App\Models\Rescate;
+
 
 class RescatadoController extends Controller
 {
@@ -11,7 +16,8 @@ class RescatadoController extends Controller
      */
     public function index()
     {
-        //
+        $rescatados = Rescatado::all();
+        return view('rescatados.index', compact('rescatados'));
     }
 
     /**
@@ -19,46 +25,65 @@ class RescatadoController extends Controller
      */
     public function create()
     {
-        //
+        $medicos = Medico::all();
+        $rescates = Rescate::all();
+        return view('rescatados.create', compact('medicos', 'rescates'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(RescatadoRequest $request)
     {
-        //
+        Rescatado::create([
+            'nombre'=>$request->nombre,
+            'foto'=>$request->foto,
+            'edad'=>$request->edad,
+            'sexo'=>$request->sexo,
+            'procedencia'=>$request->procedencia,
+            'valoracion_medica'=>$request->valoracion_medica,
+            'medico_id'=>$request->medico_id,
+            'rescate_id'=>$request->rescate_id
+        ]);
+
+        return redirect()->route('rescatados.index')->with('success', 'Rescatado creado con éxito!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Rescatado $rescatado)
     {
-        //
+        return view('rescatados.show', compact('rescatado'));
+
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Rescatado $rescatado)
     {
-        //
+        $medicos = Medico::all();
+        $rescates = Rescate::all();
+        return view('rescatados.edit', compact('rescatado', 'medicos', 'rescates'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(RescatadoRequest $request, Rescatado $rescatado)
     {
-        //
+        $rescatado -> update($request -> all());
+
+        return redirect()->route('rescatados.index')->with('success', 'Rescatado actualizado con éxito!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Rescatado $rescatado)
     {
-        //
+        $rescatado -> delete();
+        return redirect() -> route('rescatados.index')->with('success', '¡Rescatado eliminado con éxito!');
     }
 }

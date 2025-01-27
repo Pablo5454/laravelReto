@@ -11,6 +11,7 @@ class Viaje extends Model
  
    protected $fillable =[
       "origen", 
-      "destino"
+      "destino",
+      "rescate_id"
   ];
 }
